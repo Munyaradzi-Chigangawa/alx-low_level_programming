@@ -5,13 +5,14 @@
 
 /**
  * main - Entry point
- * Description: print value of n satus; zero, positive or negative
+ * print value of n - zero, positive or negative
  * Return: 0 if successfully executed
  */
 
 int main(void)
 {
 	int n;
+
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 
