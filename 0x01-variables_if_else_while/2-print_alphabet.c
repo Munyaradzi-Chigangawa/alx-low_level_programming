@@ -6,7 +6,8 @@
  * return - 0 if successfully executed
  */
 
-int main() {
+int main(void)
+{
     char ch;
 
     for (
@@ -18,5 +19,5 @@ int main() {
         putchar(ch);
     }
     putchar('\n');
-    return 0;
+    return (0);
 }
