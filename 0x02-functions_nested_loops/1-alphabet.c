@@ -2,7 +2,7 @@
 
 /**
 * print_alphabet - Entry point
-* 
+*
 * Return: Always 0
 */
 
