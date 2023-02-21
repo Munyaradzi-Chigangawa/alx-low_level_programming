@@ -2,7 +2,7 @@
 
 /**
  * main - Entry Point
- * description: print alphabet 10 times
+ * description: print alphabet x10 times
  * return: void
  */
 
