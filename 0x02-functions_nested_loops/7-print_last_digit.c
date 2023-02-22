@@ -2,7 +2,7 @@
 
 /**
  * print_last_digit - Entry point
- * @n: return val
+ * @i: return val
  * return: val
  */
 
