@@ -1,15 +1,14 @@
 #include "main.h"
 
 /**
- * _abs - entry point
- * @x: takes an integer
- * description: computing value of on integer
- * return: Always 0 (Success)
+ * _abs -entry point
+ * @a: takes an integer
+ * return: Integer
  */
 
-int _abs(int x)
+int _abs(int a)
 {
-	if ( x < 0)
-		x = (-1) * x;
-	return (x);
+	if ( a < 0)
+		a = (-1) * a;
+	return (a);
 }

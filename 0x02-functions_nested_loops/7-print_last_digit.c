@@ -5,7 +5,7 @@
  *
  * @n: takes in number
  *
- * return: Always 0 (Success)
+ * return: lastDigit
  */
 
 int print_last_digit(int n)
