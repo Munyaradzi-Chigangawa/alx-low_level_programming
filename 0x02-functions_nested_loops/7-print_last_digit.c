@@ -2,9 +2,7 @@
 
 /**
  * print_last_digit - Entry point
- *
- * @n: takes in number
- *
+ * @n: return last value
  * return: lastDigit
  */
 
