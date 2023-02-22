@@ -3,7 +3,7 @@
 /**
  * print_last_digit - Entry point
  * @i: return val
- * return: val
+ * return: 0 val(Success)
  */
 
 int print_last_digit(int i)
