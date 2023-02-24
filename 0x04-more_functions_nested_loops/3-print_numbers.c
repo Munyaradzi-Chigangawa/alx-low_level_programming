@@ -6,7 +6,6 @@
  */
 
 void print_numbers(void)
-
 {
 
 	int x;
@@ -16,4 +15,5 @@ void print_numbers(void)
 	_putchar(x + '0');
 	}
 	_putchar('\n');
+	return (0);
 }
