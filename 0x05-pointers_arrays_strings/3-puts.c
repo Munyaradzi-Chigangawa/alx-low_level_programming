@@ -4,12 +4,16 @@
  * @str: char array string type
  * Description: Can only use _putchar
  */
+
 void _puts(char *str)
 {
-int i;
-for (i = 0; str[i] != '\0'; i++)
-{
-_putchar(str[i]);
+	int i = 0;
+
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+	}
+
+	_putchar('\n');
 }
-_putchar('\n');
-}}
