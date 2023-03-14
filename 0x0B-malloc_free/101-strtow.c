@@ -1,70 +1,101 @@
-#include "main.h"
 #include <stdlib.h>
+
 /**
- * get_words_count - Computes the number of words in a string
- * @str: The source string
- * @count: The number of words
- */
-void get_words_count(char *str, int *count)
+ * wordcount - get word count from string
+ *             without spaces
+ *
+ * @str: string to count words present
+ *
+ * Return: The number of words
+*/
+
+int wordcount(char *str)
 {
-int i, j;
-char prev_char = ' ';
-for (i = 0; str != NULL && *(str + i) != '\0'; i++)
+	int words = 0;
+
+	while (*str != '\0')
+	{
+		/*skip spaces*/
+		if (*str == ' ')
+			str++;
+		else
+		{
+			/*count words*/
+			while (*str != ' ' && *str != '\0')
+				str++;
+			words++;
+		}
+	}
+	return (words);
+}
+
+/**
+ * free_array - free arr[i]
+ *
+ * @ar: array to free
+ * @i: array[i]
+ *
+ * Return: nothing
+*/
+
+void free_array(char **ar, int i)
 {
-if (*(str + i) != ' ' && prev_char == ' ')
-{
-*count += 1;
-j = 0;
+	if (ar != NULL && i != 0)
+	{
+		while (i >= 0)
+		{
+			free(ar[i]);
+			i--;
+		}
+		free(ar);
+	}
 }
-if (*(str + i) != ' ')
-j++;
-prev_char = *(str + i);
-}
-}
-void get_word_length(char *str, int *length)
-{
-*length = 0;
-if (str == NULL || (str != NULL && (*str == '\0' || *str == ' ')))
-return;
-while (*(str + *length) != '\0' && *(str + *length) != ' ')
-*length += 1;
-}
+
+/**
+ * strtow - split a string to words
+ *
+ * @str: string to split.
+ *
+ * Return: NULL if it fails
+*/
+
 char **strtow(char *str)
 {
-char **words;
-int i, j, k, len, words_count;
-char prev_char = ' ';
-get_words_count(str, &words_count);
-if (str == NULL || *str == '\0' || words_count == 0)
-return (NULL);
-words = malloc((sizeof(char *) * (words_count + 1)));
-if (words)
-{
-j = -1;
-k = 0;
-prev_char = ' ';
-for (i = 0; *(str + i) != '\0'; i++)
-{
-if (*(str + i) != ' ')
-{
-if (prev_char == ' ')
-{
-j++;
-get_word_length(str + i, &len);
-*(words + j) = malloc((sizeof(char) * (len + 1)));
-if (*(words + j) == NULL)
-return (NULL);
-k = 0;
-}
-*(*(words + j) + k) = *(str + i);
-k++;
-if (*(str + i + 1) == '\0' || *(str + i + 1) == ' ')
-*(*(words + j) + k) = '\0';
-}
-prev_char = *(str + i);
-}
-*(words + j + 1) = NULL;
-return (words);
-}
-return (NULL);
+	int i, s, j, str_l, word;
+	char **string;
+
+	if (str == NULL || *str == '\0')
+		return (NULL);
+
+	str_l = wordcount(str);
+	/*return null if str_l == 0 || new == NULL*/
+	string = malloc((str_l + 1) * sizeof(char *));
+	if (str_l == 0 || string == NULL)
+		return (NULL);
+
+	for (i = s = 0; i < str_l; i++)
+	{
+		for (word = s; str[word] != '\0'; word++)
+		{
+			if (str[word] == ' ')
+				s++;
+
+			if (str[word] != ' ' && (str[word + 1] == ' ' || str[word + 1] == '\0'))
+			{
+				string[i] = malloc((word - s + 2) * sizeof(char));
+				if (string[i] == NULL)
+				{
+					free_array(string, i);
+					return (NULL);
+				}
+				break;
+			}
+		}
+
+		for (j = 0; s <= word; s++, j++)
+			string[i][j] = str[s];
+		string[i][j] = '\0';
+	}
+	string[i] = NULL;
+	return (string);
 }
